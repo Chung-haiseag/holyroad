@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>99007200987-l515bq33g6r9bf6je25eprr4jqhei2su.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.99007200987-l515bq33g6r9bf6je25eprr4jqhei2su</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDto-bJptxxJxy7ZMeDwaQs00A028otrPU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>99007200987</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.holyroad.holyroad</string>
+	<key>PROJECT_ID</key>
+	<string>holyroad-f21f2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>holyroad-f21f2.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:99007200987:ios:be0166a2e8f191416616fe</string>
+</dict>
+</plist>

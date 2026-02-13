@@ -1,0 +1,80 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===== 헬퍼 함수 =====
+
+    // 로그인 여부 확인
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // 자신의 데이터인지 확인
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // 관리자인지 확인 (users 컬렉션의 role 필드)
+    function isAdmin() {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // 요청 데이터에 필수 필드가 있는지 확인
+    function hasFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    // ===== 사용자 컬렉션 =====
+    match /users/{userId} {
+      // 누구나 프로필 읽기 가능 (공개 프로필)
+      allow read: if true;
+
+      // 자신의 프로필만 생성/수정 가능
+      allow create: if isOwner(userId) &&
+        hasFields(['email', 'displayName']);
+
+      allow update: if isOwner(userId) || isAdmin();
+
+      // 삭제는 관리자만 가능
+      allow delete: if isAdmin();
+    }
+
+    // ===== 방문(순례) 기록 컬렉션 =====
+    match /visits/{visitId} {
+      // 누구나 방문 기록 읽기 가능 (공개 피드)
+      allow read: if true;
+
+      // 로그인한 사용자만 방문 기록 생성 가능
+      allow create: if isSignedIn() &&
+        hasFields(['userId', 'siteId', 'siteName', 'timestamp']) &&
+        request.resource.data.userId == request.auth.uid &&
+        request.resource.data.prayerMessage is string &&
+        request.resource.data.prayerMessage.size() <= 500;
+
+      // 자신의 기록만 수정 가능 (기도문 수정 등)
+      allow update: if isOwner(resource.data.userId) || isAdmin();
+
+      // 자신의 기록 또는 관리자만 삭제 가능
+      allow delete: if isOwner(resource.data.userId) || isAdmin();
+    }
+
+    // ===== 성지 컬렉션 =====
+    match /holy_sites/{siteId} {
+      // 누구나 성지 정보 읽기 가능
+      allow read: if true;
+
+      // 인증된 사용자가 성지 생성 가능 (초기 시드 + 관리자)
+      // 수정/삭제는 관리자만 가능
+      allow create: if isSignedIn();
+      allow update, delete: if isAdmin();
+    }
+
+    // ===== 기본 규칙: 나머지 컬렉션 접근 차단 =====
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

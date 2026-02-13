@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "99007200987",
+    "project_id": "holyroad-f21f2",
+    "storage_bucket": "holyroad-f21f2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99007200987:android:0e33fa25dc239c986616fe",
+        "android_client_info": {
+          "package_name": "com.holyroad.holyroad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99007200987-h0kgh7qrgri6l8bk5046oufd2u4cosp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ1Rvh3_lgdbvgaLe-Xb7G6vdZ75Lz_SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99007200987-h0kgh7qrgri6l8bk5046oufd2u4cosp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,62 @@
+{
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "holyroad-f21f2",
+          "appId": "1:99007200987:android:0e33fa25dc239c986616fe",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "holyroad-f21f2",
+          "appId": "1:99007200987:ios:be0166a2e8f191416616fe",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "holyroad-f21f2",
+          "appId": "1:99007200987:ios:be0166a2e8f191416616fe",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "holyroad-f21f2",
+          "configurations": {
+            "android": "1:99007200987:android:0e33fa25dc239c986616fe",
+            "ios": "1:99007200987:ios:be0166a2e8f191416616fe",
+            "macos": "1:99007200987:ios:be0166a2e8f191416616fe",
+            "web": "1:99007200987:web:7de73598dbe54f6c6616fe",
+            "windows": "1:99007200987:web:3f1499164f260da36616fe"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}

@@ -1,0 +1,44 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ===== 방문 사진 =====
+    match /visits/{fileName} {
+      // 누구나 방문 사진 읽기 가능 (공개 피드)
+      allow read: if true;
+
+      // 로그인한 사용자만 업로드 가능
+      // 파일 크기 10MB 이하, 이미지 파일만 허용
+      allow create: if request.auth != null &&
+        request.resource.size < 10 * 1024 * 1024 &&
+        request.resource.contentType.matches('image/.*');
+
+      // 업로드한 사용자 또는 관리자만 삭제 가능
+      // (Storage에서는 메타데이터로 소유자 확인이 어려우므로 인증된 사용자 허용)
+      allow delete: if request.auth != null;
+
+      // 덮어쓰기 방지
+      allow update: if false;
+    }
+
+    // ===== 사용자 프로필 사진 =====
+    match /profiles/{userId}/{fileName} {
+      // 누구나 프로필 사진 읽기 가능
+      allow read: if true;
+
+      // 자신의 프로필 사진만 업로드/삭제 가능
+      allow create, delete: if request.auth != null &&
+        request.auth.uid == userId &&
+        request.resource.size < 5 * 1024 * 1024 &&
+        request.resource.contentType.matches('image/.*');
+
+      allow update: if false;
+    }
+
+    // ===== 기본 규칙: 나머지 경로 접근 차단 =====
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
