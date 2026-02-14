@@ -76,9 +76,8 @@ class RealLocationService implements LocationService {
   /// Firestore에서 성지 목록 로드 (실패 시 폴백)
   Future<List<HolySite>> _loadSites() async {
     try {
-      // 먼저 시드 실행 (비어있으면 자동으로 데이터 삽입)
       await _seedService.seedIfEmpty();
-      // Firestore에서 로드
+      // getAllSites()가 Firestore + 누락된 시드 데이터를 자동 병합
       final sites = await _seedService.getAllSites();
       if (sites.isNotEmpty) return sites;
     } catch (_) {

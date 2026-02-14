@@ -13,6 +13,9 @@ abstract class FirestoreRepository {
 
   /// 방문(기도문) 기록을 삭제합니다.
   Future<void> deleteVisit(String visitId);
+
+  /// 방문 기록의 기도문을 수정합니다.
+  Future<void> updateVisitPrayer(String visitId, String newPrayerMessage);
 }
 
 
@@ -69,6 +72,14 @@ class MockFirestoreRepository implements FirestoreRepository {
   @override
   Future<void> deleteVisit(String visitId) async {
     _visits.removeWhere((v) => v.id == visitId);
+  }
+
+  @override
+  Future<void> updateVisitPrayer(String visitId, String newPrayerMessage) async {
+    final index = _visits.indexWhere((v) => v.id == visitId);
+    if (index != -1) {
+      _visits[index] = _visits[index].copyWith(prayerMessage: newPrayerMessage);
+    }
   }
 }
 

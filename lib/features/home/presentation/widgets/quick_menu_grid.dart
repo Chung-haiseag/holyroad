@@ -7,18 +7,24 @@ class QuickMenuGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menuItems = [
-      {'icon': Icons.map, 'label': '지도', 'route': '/map'},
-      {'icon': Icons.flag, 'label': '성지 순례', 'route': '/pilgrimage'},
-      {'icon': Icons.book, 'label': '순례자의기록', 'route': '/guestbook'},
+      {'icon': Icons.map, 'label': '성지 지도', 'route': '/map'},
+      {'icon': Icons.church, 'label': '순례 체험', 'route': '/pilgrimage'},
+      {'icon': Icons.book, 'label': '순례 나눔', 'route': '/guestbook'},
       {'icon': Icons.chat_bubble, 'label': 'AI 상담', 'route': '/ai-chat'},
+      {
+        'icon': Icons.collections_bookmark,
+        'label': '스탬프',
+        'route': '/stamp-collection'
+      },
+      {'icon': Icons.style, 'label': '말씀 뽑기', 'route': '/verse-gacha'},
     ];
 
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
-        childAspectRatio: 0.8,
+        crossAxisCount: 3,
+        childAspectRatio: 0.85,
       ),
       itemCount: menuItems.length,
       itemBuilder: (context, index) {

@@ -15,6 +15,14 @@ import 'package:holyroad/features/notifications/presentation/notifications_scree
 import 'package:holyroad/features/profile/presentation/profile_screen.dart';
 import 'package:holyroad/features/guestbook/presentation/guestbook_screen.dart';
 import 'package:holyroad/features/ai_chat/presentation/ai_chat_screen.dart';
+import 'package:holyroad/features/search/presentation/search_screen.dart';
+import 'package:holyroad/features/onboarding/presentation/splash_screen.dart';
+import 'package:holyroad/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:holyroad/features/settings/presentation/settings_screen.dart';
+import 'package:holyroad/features/profile/presentation/persona_edit_screen.dart';
+import 'package:holyroad/features/stamp_collection/presentation/stamp_collection_screen.dart';
+import 'package:holyroad/features/verse_gacha/presentation/verse_gacha_screen.dart';
+import 'package:holyroad/features/verse_gacha/presentation/verse_collection_screen.dart';
 
 part 'app_router.g.dart';
 
@@ -24,7 +32,7 @@ GoRouter appRouter(AppRouterRef ref) {
   final authRepository = ref.watch(authRepositoryProvider);
 
   return GoRouter(
-    initialLocation: kIsWeb ? '/admin' : '/', // Force Admin on Web
+    initialLocation: kIsWeb ? '/admin' : '/splash',
     refreshListenable: GoRouterRefreshStream(authRepository.authStateChanges),
     redirect: (context, state) {
       // For now, we allow access to everything even if not logged in (Guest Mode handling)
@@ -73,6 +81,38 @@ GoRouter appRouter(AppRouterRef ref) {
       GoRoute(
         path: '/ai-chat',
         builder: (context, state) => const AiChatScreen(),
+      ),
+      GoRoute(
+        path: '/search',
+        builder: (context, state) => const SearchScreen(),
+      ),
+      GoRoute(
+        path: '/splash',
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding',
+        builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: '/persona-edit',
+        builder: (context, state) => const PersonaEditScreen(),
+      ),
+      GoRoute(
+        path: '/stamp-collection',
+        builder: (context, state) => const StampCollectionScreen(),
+      ),
+      GoRoute(
+        path: '/verse-gacha',
+        builder: (context, state) => const VerseGachaScreen(),
+      ),
+      GoRoute(
+        path: '/verse-collection',
+        builder: (context, state) => const VerseCollectionScreen(),
       ),
       GoRoute(
         path: '/admin',

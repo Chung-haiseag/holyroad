@@ -75,4 +75,11 @@ class RealFirestoreRepository implements FirestoreRepository {
   Future<void> deleteVisit(String visitId) async {
     await _firestore.collection('visits').doc(visitId).delete();
   }
+
+  @override
+  Future<void> updateVisitPrayer(String visitId, String newPrayerMessage) async {
+    await _firestore.collection('visits').doc(visitId).update({
+      'prayerMessage': newPrayerMessage,
+    });
+  }
 }

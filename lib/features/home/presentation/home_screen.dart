@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:holyroad/core/services/geofence_notification_service.dart';
+import 'package:holyroad/core/widgets/offline_banner.dart';
 import 'package:holyroad/features/home/presentation/widgets/geofencing_radar_card.dart';
 import 'package:holyroad/features/home/presentation/widgets/home_sliver_app_bar.dart';
 import 'package:holyroad/features/home/presentation/widgets/quick_menu_grid.dart';
 import 'package:holyroad/features/home/presentation/widgets/real_time_feed_list.dart';
+import 'package:holyroad/features/daily_quest/presentation/widgets/daily_quest_card.dart';
+import 'package:holyroad/features/verse_gacha/presentation/widgets/today_verse_card.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -16,7 +19,11 @@ class HomeScreen extends ConsumerWidget {
     ref.watch(geofenceNotificationServiceProvider);
 
     return Scaffold(
-      body: CustomScrollView(
+      body: Column(
+        children: [
+          const OfflineBanner(),
+          Expanded(
+            child: CustomScrollView(
         slivers: [
           const HomeSliverAppBar(),
           SliverToBoxAdapter(
@@ -31,6 +38,10 @@ class HomeScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 10),
                   const GeofencingRadarCard(),
+                  const SizedBox(height: 12),
+                  const DailyQuestCard(),
+                  const SizedBox(height: 8),
+                  const TodayVerseCard(),
                   const SizedBox(height: 20),
                   const QuickMenuGrid(),
                   const SizedBox(height: 20),
@@ -41,7 +52,10 @@ class HomeScreen extends ConsumerWidget {
                         '실시간 순례 피드',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      TextButton(onPressed: () {}, child: const Text('더보기')),
+                      TextButton(
+                        onPressed: () => context.push('/guestbook'),
+                        child: const Text('더보기'),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -49,6 +63,9 @@ class HomeScreen extends ConsumerWidget {
                 ],
               ),
             ),
+          ),
+        ],
+      ),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:holyroad/core/services/ai_service.dart';
+import 'package:holyroad/core/providers/user_persona_provider.dart';
 import 'package:holyroad/core/services/tts_service.dart';
 
 /// 오디오 가이드 바.
@@ -55,6 +56,15 @@ class _AudioGuideBarState extends ConsumerState<AudioGuideBar>
       vsync: this,
       duration: const Duration(milliseconds: 1200),
     );
+  }
+
+  @override
+  void didUpdateWidget(covariant AudioGuideBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // 주제가 변경되면 재생 중인 가이드 초기화
+    if (oldWidget.topic != widget.topic || oldWidget.siteName != widget.siteName) {
+      _onStop();
+    }
   }
 
   @override
@@ -309,7 +319,8 @@ class _AudioGuideBarState extends ConsumerState<AudioGuideBar>
     final buffer = StringBuffer();
 
     try {
-      final stream = aiService.streamGuide(widget.siteName, widget.topic);
+      final persona = ref.read(userPersonaProvider).valueOrNull;
+      final stream = aiService.streamGuide(widget.siteName, widget.topic, persona: persona);
       _streamSubscription = stream.listen(
         (text) {
           if (!mounted || !_isPlaying) return;

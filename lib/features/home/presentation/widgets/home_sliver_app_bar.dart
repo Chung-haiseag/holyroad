@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:holyroad/core/services/notification_service.dart';
+import 'package:holyroad/core/services/recommendation_service.dart';
+import 'package:holyroad/core/widgets/cached_holy_image.dart';
 
 class HomeSliverAppBar extends ConsumerWidget {
   const HomeSliverAppBar({super.key});
@@ -12,6 +14,10 @@ class HomeSliverAppBar extends ConsumerWidget {
     final unreadCount = notificationService.history
         .where((n) => !n.isRead)
         .length;
+    final recommendedSite = ref.watch(dailyRecommendationProvider);
+
+    final siteName = recommendedSite.valueOrNull?.name ?? 'Holy Road';
+    final siteImageUrl = recommendedSite.valueOrNull?.imageUrl;
 
     return SliverAppBar(
       expandedHeight: 200.0,
@@ -22,10 +28,13 @@ class HomeSliverAppBar extends ConsumerWidget {
         background: Stack(
           fit: StackFit.expand,
           children: [
-            Image.network(
-              'https://picsum.photos/seed/holy/800/400',
-              fit: BoxFit.cover,
-            ),
+            if (siteImageUrl != null)
+              CachedHolyImage(
+                imageUrl: siteImageUrl,
+                fit: BoxFit.cover,
+              )
+            else
+              Container(color: Theme.of(context).colorScheme.primaryContainer),
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -38,27 +47,35 @@ class HomeSliverAppBar extends ConsumerWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               bottom: 60,
               left: 16,
               right: 16,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '오늘의 추천 성지',
-                    style: TextStyle(color: Colors.white70, fontSize: 14),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    '양화진 외국인 선교사 묘원',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+              child: GestureDetector(
+                onTap: () {
+                  final site = recommendedSite.valueOrNull;
+                  if (site != null) {
+                    context.push('/pilgrimage', extra: site);
+                  }
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      '오늘의 추천 성지',
+                      style: TextStyle(color: Colors.white70, fontSize: 14),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 4),
+                    Text(
+                      siteName,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

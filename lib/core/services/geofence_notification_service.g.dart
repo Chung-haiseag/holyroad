@@ -7,10 +7,10 @@ part of 'geofence_notification_service.dart';
 // **************************************************************************
 
 String _$geofenceNotificationServiceHash() =>
-    r'2085f48acfe51f8604e88db0fca40f88a70d6751';
+    r'ad630ea78a90de7590e7d9c3712e74fc5b9275b4';
 
 /// 지오펜스 알림 서비스 프로바이더.
-/// 위치 서비스와 알림 서비스를 연결합니다.
+/// 위치 서비스와 알림 서비스를 연결하고, 설정값을 반영합니다.
 ///
 /// Copied from [geofenceNotificationService].
 @ProviderFor(geofenceNotificationService)

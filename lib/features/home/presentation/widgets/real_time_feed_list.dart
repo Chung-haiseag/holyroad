@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:holyroad/core/widgets/cached_holy_image.dart';
 import 'package:holyroad/features/pilgrimage/domain/repositories/firestore_repository.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -34,7 +36,7 @@ class RealTimeFeedList extends ConsumerWidget {
                       children: [
                         CircleAvatar(
                           radius: 16,
-                          backgroundImage: NetworkImage(visit.userPhotoUrl),
+                          backgroundImage: CachedNetworkImageProvider(visit.userPhotoUrl),
                         ),
                         const SizedBox(width: 8),
                         Text(
@@ -52,13 +54,11 @@ class RealTimeFeedList extends ConsumerWidget {
                     Text(visit.prayerMessage),
                     if (visit.photoUrl.isNotEmpty) ...[
                         const SizedBox(height: 8),
-                        ClipRRect(
+                        CachedHolyImage(
+                            imageUrl: visit.photoUrl,
+                            width: double.infinity,
+                            fit: BoxFit.contain,
                             borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                                visit.photoUrl,
-                                width: double.infinity,
-                                fit: BoxFit.contain,
-                            ),
                         ),
                     ]
                   ],

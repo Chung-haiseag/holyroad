@@ -27,6 +27,7 @@ mixin _$HolySite {
   double get latitude => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  HolySiteType get siteType => throw _privateConstructorUsedError;
   double get distanceKm => throw _privateConstructorUsedError;
 
   /// Serializes this HolySite to a JSON map.
@@ -51,6 +52,7 @@ abstract class $HolySiteCopyWith<$Res> {
     double latitude,
     double longitude,
     String imageUrl,
+    HolySiteType siteType,
     double distanceKm,
   });
 }
@@ -76,6 +78,7 @@ class _$HolySiteCopyWithImpl<$Res, $Val extends HolySite>
     Object? latitude = null,
     Object? longitude = null,
     Object? imageUrl = null,
+    Object? siteType = null,
     Object? distanceKm = null,
   }) {
     return _then(
@@ -104,6 +107,10 @@ class _$HolySiteCopyWithImpl<$Res, $Val extends HolySite>
                 ? _value.imageUrl
                 : imageUrl // ignore: cast_nullable_to_non_nullable
                       as String,
+            siteType: null == siteType
+                ? _value.siteType
+                : siteType // ignore: cast_nullable_to_non_nullable
+                      as HolySiteType,
             distanceKm: null == distanceKm
                 ? _value.distanceKm
                 : distanceKm // ignore: cast_nullable_to_non_nullable
@@ -130,6 +137,7 @@ abstract class _$$HolySiteImplCopyWith<$Res>
     double latitude,
     double longitude,
     String imageUrl,
+    HolySiteType siteType,
     double distanceKm,
   });
 }
@@ -154,6 +162,7 @@ class __$$HolySiteImplCopyWithImpl<$Res>
     Object? latitude = null,
     Object? longitude = null,
     Object? imageUrl = null,
+    Object? siteType = null,
     Object? distanceKm = null,
   }) {
     return _then(
@@ -182,6 +191,10 @@ class __$$HolySiteImplCopyWithImpl<$Res>
             ? _value.imageUrl
             : imageUrl // ignore: cast_nullable_to_non_nullable
                   as String,
+        siteType: null == siteType
+            ? _value.siteType
+            : siteType // ignore: cast_nullable_to_non_nullable
+                  as HolySiteType,
         distanceKm: null == distanceKm
             ? _value.distanceKm
             : distanceKm // ignore: cast_nullable_to_non_nullable
@@ -201,6 +214,7 @@ class _$HolySiteImpl implements _HolySite {
     required this.latitude,
     required this.longitude,
     required this.imageUrl,
+    this.siteType = HolySiteType.holySite,
     this.distanceKm = 0.0,
   });
 
@@ -221,11 +235,14 @@ class _$HolySiteImpl implements _HolySite {
   final String imageUrl;
   @override
   @JsonKey()
+  final HolySiteType siteType;
+  @override
+  @JsonKey()
   final double distanceKm;
 
   @override
   String toString() {
-    return 'HolySite(id: $id, name: $name, description: $description, latitude: $latitude, longitude: $longitude, imageUrl: $imageUrl, distanceKm: $distanceKm)';
+    return 'HolySite(id: $id, name: $name, description: $description, latitude: $latitude, longitude: $longitude, imageUrl: $imageUrl, siteType: $siteType, distanceKm: $distanceKm)';
   }
 
   @override
@@ -243,6 +260,8 @@ class _$HolySiteImpl implements _HolySite {
                 other.longitude == longitude) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.siteType, siteType) ||
+                other.siteType == siteType) &&
             (identical(other.distanceKm, distanceKm) ||
                 other.distanceKm == distanceKm));
   }
@@ -257,6 +276,7 @@ class _$HolySiteImpl implements _HolySite {
     latitude,
     longitude,
     imageUrl,
+    siteType,
     distanceKm,
   );
 
@@ -282,6 +302,7 @@ abstract class _HolySite implements HolySite {
     required final double latitude,
     required final double longitude,
     required final String imageUrl,
+    final HolySiteType siteType,
     final double distanceKm,
   }) = _$HolySiteImpl;
 
@@ -300,6 +321,8 @@ abstract class _HolySite implements HolySite {
   double get longitude;
   @override
   String get imageUrl;
+  @override
+  HolySiteType get siteType;
   @override
   double get distanceKm;
 

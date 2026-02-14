@@ -40,6 +40,27 @@ service cloud.firestore {
 
       // 삭제는 관리자만 가능
       allow delete: if isAdmin();
+
+      // ----- 말씀 뽑기 기록 (일별) -----
+      match /verse_draws/{drawId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update, delete: if false;
+      }
+
+      // ----- 말씀 컬렉션 -----
+      match /verse_collection/{verseId} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId);
+        allow delete: if false;
+      }
+
+      // ----- 일일 미션 기록 -----
+      match /daily_missions/{missionId} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId);
+        allow delete: if false;
+      }
     }
 
     // ===== 방문(순례) 기록 컬렉션 =====

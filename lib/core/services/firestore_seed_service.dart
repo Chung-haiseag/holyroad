@@ -1,5 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:holyroad/features/map/domain/entities/holy_site_entity.dart';
 
 /// Firestore 초기 데이터 시드 서비스.
@@ -18,6 +19,7 @@ class FirestoreSeedService {
       latitude: 37.5448,
       longitude: 126.9102,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Yanghwajin.jpg/500px-Yanghwajin.jpg',
+      siteType: HolySiteType.holySite,
     ),
     HolySite(
       id: 'jeongdong',
@@ -27,6 +29,7 @@ class FirestoreSeedService {
       latitude: 37.5656,
       longitude: 126.9750,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/American_Methodist_Church%2C_Seoul%2C_c.1900.jpg/500px-American_Methodist_Church%2C_Seoul%2C_c.1900.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'saemoonan',
@@ -36,6 +39,7 @@ class FirestoreSeedService {
       latitude: 37.5720,
       longitude: 126.9752,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Saemoonan_hall.JPG/500px-Saemoonan_hall.JPG',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'sorae',
@@ -45,6 +49,7 @@ class FirestoreSeedService {
       latitude: 38.2000,
       longitude: 125.1500,
       imageUrl: 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'underwood',
@@ -54,6 +59,7 @@ class FirestoreSeedService {
       latitude: 37.5647,
       longitude: 126.9389,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Underwood_hall.jpg/500px-Underwood_hall.jpg',
+      siteType: HolySiteType.memorial,
     ),
     HolySite(
       id: 'yeouidofc',
@@ -63,6 +69,7 @@ class FirestoreSeedService {
       latitude: 37.5220,
       longitude: 126.9244,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Yoido_Full_Gospel_Church_Outdoor_Cross.JPG/500px-Yoido_Full_Gospel_Church_Outdoor_Cross.JPG',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'pyeongyang',
@@ -72,6 +79,7 @@ class FirestoreSeedService {
       latitude: 39.0167,
       longitude: 125.7500,
       imageUrl: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'jemulpo',
@@ -81,6 +89,7 @@ class FirestoreSeedService {
       latitude: 37.4738,
       longitude: 126.6217,
       imageUrl: 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'daegu_first',
@@ -90,6 +99,7 @@ class FirestoreSeedService {
       latitude: 35.8714,
       longitude: 128.5966,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gwangju_yangrim',
@@ -99,6 +109,7 @@ class FirestoreSeedService {
       latitude: 35.1447,
       longitude: 126.9077,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'busan_choryang',
@@ -108,6 +119,7 @@ class FirestoreSeedService {
       latitude: 35.1175,
       longitude: 129.0403,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'samilpo',
@@ -117,6 +129,7 @@ class FirestoreSeedService {
       latitude: 37.5711,
       longitude: 126.9889,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Pagoda_Park.jpg/500px-Pagoda_Park.jpg',
+      siteType: HolySiteType.memorial,
     ),
 
     // ===== 서울 지역 추가 =====
@@ -128,6 +141,7 @@ class FirestoreSeedService {
       latitude: 37.4886,
       longitude: 126.9816,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'seungdong',
@@ -137,6 +151,7 @@ class FirestoreSeedService {
       latitude: 37.5700,
       longitude: 126.9920,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/%EC%8A%B9%EB%8F%99%EA%B5%90%ED%9A%8C%2C_Insadong%2C_Seoul_02.jpg/500px-%EC%8A%B9%EB%8F%99%EA%B5%90%ED%9A%8C%2C_Insadong%2C_Seoul_02.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'yondong',
@@ -146,6 +161,7 @@ class FirestoreSeedService {
       latitude: 37.5731,
       longitude: 126.9858,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'chungdong',
@@ -155,6 +171,7 @@ class FirestoreSeedService {
       latitude: 37.5640,
       longitude: 126.9770,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/American_Methodist_Church%2C_Seoul%2C_c.1900.jpg/500px-American_Methodist_Church%2C_Seoul%2C_c.1900.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'paichai',
@@ -164,6 +181,7 @@ class FirestoreSeedService {
       latitude: 37.5637,
       longitude: 126.9718,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/East_hall_of_Pai_Chai_school.JPG/500px-East_hall_of_Pai_Chai_school.JPG',
+      siteType: HolySiteType.museum,
     ),
     HolySite(
       id: 'ewha',
@@ -173,6 +191,7 @@ class FirestoreSeedService {
       latitude: 37.5618,
       longitude: 126.9467,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Ewha_Women%27s_Univ_Main_Buildingl-20070908.JPG/500px-Ewha_Women%27s_Univ_Main_Buildingl-20070908.JPG',
+      siteType: HolySiteType.memorial,
     ),
     HolySite(
       id: 'severance',
@@ -182,6 +201,7 @@ class FirestoreSeedService {
       latitude: 37.5622,
       longitude: 126.9400,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Severance_Hospital_in_1904.jpg',
+      siteType: HolySiteType.memorial,
     ),
     HolySite(
       id: 'namsan_prayer',
@@ -191,6 +211,7 @@ class FirestoreSeedService {
       latitude: 37.5512,
       longitude: 126.9882,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Namsan_Park_and_Seoul_Tower_%284615642044%29.jpg/500px-Namsan_Park_and_Seoul_Tower_%284615642044%29.jpg',
+      siteType: HolySiteType.memorial,
     ),
     HolySite(
       id: 'youngnak',
@@ -200,6 +221,7 @@ class FirestoreSeedService {
       latitude: 37.5630,
       longitude: 126.9780,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Young_Nak_Church_2007.jpg/500px-Young_Nak_Church_2007.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'myungsung',
@@ -209,6 +231,7 @@ class FirestoreSeedService {
       latitude: 37.5050,
       longitude: 127.0580,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/MyungsungChurch.jpg/500px-MyungsungChurch.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'onnuri',
@@ -218,6 +241,17 @@ class FirestoreSeedService {
       latitude: 37.5289,
       longitude: 126.9215,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/140504_onnuri_seobi%40go.JPG/500px-140504_onnuri_seobi%40go.JPG',
+      siteType: HolySiteType.church,
+    ),
+    HolySite(
+      id: 'onnuri_yangjae',
+      name: '온누리교회 양재성전',
+      description:
+          '온누리교회의 양재 캠퍼스로, 강남 지역 선교와 다음 세대 양육의 거점입니다. 하용조 목사의 선교 비전을 이어받아 지역사회와 세계 선교에 헌신하고 있으며, 열정적인 예배와 소그룹 공동체로 많은 성도들이 신앙을 성장시키는 곳입니다.',
+      latitude: 37.4842,
+      longitude: 127.0352,
+      imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'sarang',
@@ -227,6 +261,7 @@ class FirestoreSeedService {
       latitude: 37.4978,
       longitude: 127.0382,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Seocho_SaRang_Community_Church.jpg/500px-Seocho_SaRang_Community_Church.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'somang',
@@ -236,6 +271,7 @@ class FirestoreSeedService {
       latitude: 37.5160,
       longitude: 127.0430,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'kwanglim',
@@ -245,6 +281,7 @@ class FirestoreSeedService {
       latitude: 37.5172,
       longitude: 127.0247,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'choonghyun',
@@ -254,6 +291,7 @@ class FirestoreSeedService {
       latitude: 37.5346,
       longitude: 126.9643,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'seoul_theological',
@@ -263,6 +301,7 @@ class FirestoreSeedService {
       latitude: 37.4917,
       longitude: 126.7965,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
 
     // ===== 경기/인천 지역 =====
@@ -274,6 +313,7 @@ class FirestoreSeedService {
       latitude: 37.7470,
       longitude: 126.4869,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Ganghwa_Anglican_Church.jpg/500px-Ganghwa_Anglican_Church.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'onsurigyohoe',
@@ -283,6 +323,7 @@ class FirestoreSeedService {
       latitude: 37.7080,
       longitude: 126.4330,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'suwon_first',
@@ -292,6 +333,7 @@ class FirestoreSeedService {
       latitude: 37.2638,
       longitude: 127.0286,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'anyang_first',
@@ -301,6 +343,7 @@ class FirestoreSeedService {
       latitude: 37.3943,
       longitude: 126.9568,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'incheon_naeri',
@@ -310,6 +353,7 @@ class FirestoreSeedService {
       latitude: 37.4757,
       longitude: 126.6340,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Naeri_Methodist_church.JPG/500px-Naeri_Methodist_church.JPG',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'pocheon_prayer',
@@ -319,6 +363,7 @@ class FirestoreSeedService {
       latitude: 37.8949,
       longitude: 127.2003,
       imageUrl: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=500&h=250&fit=crop',
+      siteType: HolySiteType.memorial,
     ),
 
     // ===== 충청권 =====
@@ -330,6 +375,7 @@ class FirestoreSeedService {
       latitude: 36.3302,
       longitude: 127.4296,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'cheonan_first',
@@ -339,6 +385,7 @@ class FirestoreSeedService {
       latitude: 36.8151,
       longitude: 127.1139,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'cheongju_first',
@@ -348,6 +395,7 @@ class FirestoreSeedService {
       latitude: 36.6372,
       longitude: 127.4895,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gongju_first',
@@ -357,6 +405,7 @@ class FirestoreSeedService {
       latitude: 36.4467,
       longitude: 126.9264,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'youngmyung',
@@ -366,6 +415,7 @@ class FirestoreSeedService {
       latitude: 36.4480,
       longitude: 126.9250,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'chungju_first',
@@ -375,6 +425,7 @@ class FirestoreSeedService {
       latitude: 36.9910,
       longitude: 127.9259,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'daejeon_hannam',
@@ -384,6 +435,7 @@ class FirestoreSeedService {
       latitude: 36.3547,
       longitude: 127.4216,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/%ED%95%9C%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90_%EB%B4%84%EC%82%AC%EC%A7%84.jpg/500px-%ED%95%9C%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90_%EB%B4%84%EC%82%AC%EC%A7%84.jpg',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'asan_memorial',
@@ -393,6 +445,7 @@ class FirestoreSeedService {
       latitude: 36.7898,
       longitude: 127.0018,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.martyrdom,
     ),
     HolySite(
       id: 'danyang_church',
@@ -402,6 +455,7 @@ class FirestoreSeedService {
       latitude: 36.9847,
       longitude: 128.3655,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
 
     // ===== 경상권 =====
@@ -413,6 +467,7 @@ class FirestoreSeedService {
       latitude: 35.1082,
       longitude: 129.0312,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'daegu_namsan',
@@ -422,6 +477,7 @@ class FirestoreSeedService {
       latitude: 35.8621,
       longitude: 128.5920,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gyeongju_first',
@@ -431,6 +487,7 @@ class FirestoreSeedService {
       latitude: 35.8562,
       longitude: 129.2246,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'andong_first',
@@ -440,6 +497,7 @@ class FirestoreSeedService {
       latitude: 36.5684,
       longitude: 128.7294,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'pohang_first',
@@ -449,6 +507,7 @@ class FirestoreSeedService {
       latitude: 36.0190,
       longitude: 129.3435,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'masan_first',
@@ -458,6 +517,7 @@ class FirestoreSeedService {
       latitude: 35.1821,
       longitude: 128.5736,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'jinju_first',
@@ -467,6 +527,7 @@ class FirestoreSeedService {
       latitude: 35.1900,
       longitude: 128.0847,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gimhae_first',
@@ -476,6 +537,7 @@ class FirestoreSeedService {
       latitude: 35.2285,
       longitude: 128.8894,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'geochang_church',
@@ -485,6 +547,7 @@ class FirestoreSeedService {
       latitude: 35.6868,
       longitude: 127.9094,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'keimyung',
@@ -494,6 +557,7 @@ class FirestoreSeedService {
       latitude: 35.8569,
       longitude: 128.4886,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'tongyeong_church',
@@ -503,6 +567,7 @@ class FirestoreSeedService {
       latitude: 34.8544,
       longitude: 128.4331,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'ulsan_first',
@@ -512,6 +577,7 @@ class FirestoreSeedService {
       latitude: 35.5569,
       longitude: 129.3132,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'dongsan_hospital',
@@ -521,6 +587,7 @@ class FirestoreSeedService {
       latitude: 35.8700,
       longitude: 128.5960,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
     ),
 
     // ===== 전라권 =====
@@ -532,6 +599,7 @@ class FirestoreSeedService {
       latitude: 35.8190,
       longitude: 127.1390,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/%EC%A0%84%EC%A3%BC_%EC%84%9C%EB%AC%B8%EA%B5%90%ED%9A%8C.jpg/500px-%EC%A0%84%EC%A3%BC_%EC%84%9C%EB%AC%B8%EA%B5%90%ED%9A%8C.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gunsan_first',
@@ -541,6 +609,7 @@ class FirestoreSeedService {
       latitude: 35.9838,
       longitude: 126.7185,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'mokpo_first',
@@ -550,6 +619,7 @@ class FirestoreSeedService {
       latitude: 34.7936,
       longitude: 126.3884,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'suncheon_first',
@@ -559,6 +629,7 @@ class FirestoreSeedService {
       latitude: 34.9506,
       longitude: 126.9511,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'yeosu_first',
@@ -568,6 +639,7 @@ class FirestoreSeedService {
       latitude: 34.7604,
       longitude: 127.6622,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'jeongeup_church',
@@ -577,6 +649,7 @@ class FirestoreSeedService {
       latitude: 35.5698,
       longitude: 126.8567,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'namwon_church',
@@ -586,6 +659,7 @@ class FirestoreSeedService {
       latitude: 35.4164,
       longitude: 127.3900,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gwangju_memorial',
@@ -595,6 +669,7 @@ class FirestoreSeedService {
       latitude: 35.1460,
       longitude: 126.9090,
       imageUrl: 'https://images.unsplash.com/photo-1555861496-0666c8981751?w=500&h=250&fit=crop',
+      siteType: HolySiteType.memorial,
     ),
     HolySite(
       id: 'honam_seminary',
@@ -604,6 +679,7 @@ class FirestoreSeedService {
       latitude: 35.1590,
       longitude: 126.8840,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'iksan_church',
@@ -613,6 +689,7 @@ class FirestoreSeedService {
       latitude: 35.9483,
       longitude: 126.9578,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
 
     // ===== 강원권 =====
@@ -624,6 +701,7 @@ class FirestoreSeedService {
       latitude: 37.3422,
       longitude: 127.9202,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Church_and_congregation%2C_Wonju%2C_%28s.d.%29_%28Taylor_box21num37%29.jpg/500px-Church_and_congregation%2C_Wonju%2C_%28s.d.%29_%28Taylor_box21num37%29.jpg',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'chuncheon_first',
@@ -633,6 +711,7 @@ class FirestoreSeedService {
       latitude: 37.8813,
       longitude: 127.7298,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gangneung_first',
@@ -642,6 +721,7 @@ class FirestoreSeedService {
       latitude: 37.7519,
       longitude: 128.8760,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'sokcho_church',
@@ -651,6 +731,7 @@ class FirestoreSeedService {
       latitude: 38.2070,
       longitude: 128.5918,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'taebaek_church',
@@ -660,6 +741,7 @@ class FirestoreSeedService {
       latitude: 37.1640,
       longitude: 128.9856,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'donghae_church',
@@ -669,6 +751,7 @@ class FirestoreSeedService {
       latitude: 37.5244,
       longitude: 129.1143,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'yongpyong_prayer',
@@ -678,6 +761,7 @@ class FirestoreSeedService {
       latitude: 37.6440,
       longitude: 128.6820,
       imageUrl: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=500&h=250&fit=crop',
+      siteType: HolySiteType.memorial,
     ),
     HolySite(
       id: 'inje_church',
@@ -687,6 +771,7 @@ class FirestoreSeedService {
       latitude: 38.0697,
       longitude: 128.1706,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
 
     // ===== 제주 =====
@@ -698,6 +783,7 @@ class FirestoreSeedService {
       latitude: 33.5138,
       longitude: 126.5295,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'seogwipo_church',
@@ -707,6 +793,7 @@ class FirestoreSeedService {
       latitude: 33.2541,
       longitude: 126.5606,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'hallim_church',
@@ -716,6 +803,7 @@ class FirestoreSeedService {
       latitude: 33.4140,
       longitude: 126.2655,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'jeju_museum',
@@ -725,6 +813,7 @@ class FirestoreSeedService {
       latitude: 33.5100,
       longitude: 126.5270,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
     ),
 
     // ===== 북한 지역 (역사적 장소) =====
@@ -736,6 +825,7 @@ class FirestoreSeedService {
       latitude: 39.0194,
       longitude: 125.7386,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'pyongyang_revival',
@@ -745,6 +835,7 @@ class FirestoreSeedService {
       latitude: 39.0120,
       longitude: 125.7450,
       imageUrl: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'wonsan_church',
@@ -754,6 +845,7 @@ class FirestoreSeedService {
       latitude: 39.1533,
       longitude: 127.4433,
       imageUrl: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=500&h=250&fit=crop',
+      siteType: HolySiteType.holySite,
     ),
     HolySite(
       id: 'sinuiju_church',
@@ -763,6 +855,7 @@ class FirestoreSeedService {
       latitude: 40.1006,
       longitude: 124.3981,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'hamheung_church',
@@ -772,6 +865,7 @@ class FirestoreSeedService {
       latitude: 39.9184,
       longitude: 127.5348,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
 
     // ===== 기념관·박물관 추가 =====
@@ -783,6 +877,7 @@ class FirestoreSeedService {
       latitude: 37.4969,
       longitude: 126.9572,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
     ),
     HolySite(
       id: 'bible_museum',
@@ -792,6 +887,7 @@ class FirestoreSeedService {
       latitude: 37.5693,
       longitude: 126.9830,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
     ),
     HolySite(
       id: 'christian_museum_seoul',
@@ -801,6 +897,7 @@ class FirestoreSeedService {
       latitude: 37.5680,
       longitude: 126.9860,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
     ),
     HolySite(
       id: 'appenzeller_memorial',
@@ -810,6 +907,7 @@ class FirestoreSeedService {
       latitude: 36.3210,
       longitude: 127.4320,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Pai_Chai_high_school%2C_Seoul%2C_%28s.d.%29_%28Taylor_box21num40%29.jpg/500px-Pai_Chai_high_school%2C_Seoul%2C_%28s.d.%29_%28Taylor_box21num40%29.jpg',
+      siteType: HolySiteType.memorial,
     ),
     HolySite(
       id: 'mokpo_memorial',
@@ -819,6 +917,7 @@ class FirestoreSeedService {
       latitude: 34.7940,
       longitude: 126.3870,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
     ),
     HolySite(
       id: 'gyeongsan_memorial',
@@ -828,6 +927,7 @@ class FirestoreSeedService {
       latitude: 35.8167,
       longitude: 128.7333,
       imageUrl: 'https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?w=500&h=250&fit=crop',
+      siteType: HolySiteType.memorial,
     ),
 
     // ===== 교육기관 추가 =====
@@ -839,6 +939,7 @@ class FirestoreSeedService {
       latitude: 37.5650,
       longitude: 126.9386,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Main_Library_at_Yonsei_University.jpg/500px-Main_Library_at_Yonsei_University.jpg',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'sungkyunkwan_christ',
@@ -848,6 +949,7 @@ class FirestoreSeedService {
       latitude: 37.4680,
       longitude: 126.6510,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'keimyung_school',
@@ -857,6 +959,7 @@ class FirestoreSeedService {
       latitude: 35.8690,
       longitude: 128.5900,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
     HolySite(
       id: 'jeonbuk_theological',
@@ -866,6 +969,7 @@ class FirestoreSeedService {
       latitude: 35.8200,
       longitude: 127.1480,
       imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=250&fit=crop',
+      siteType: HolySiteType.school,
     ),
 
     // ===== 추가 역사적 교회·성지 =====
@@ -877,6 +981,7 @@ class FirestoreSeedService {
       latitude: 36.9921,
       longitude: 127.0857,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'jecheon_church',
@@ -886,6 +991,7 @@ class FirestoreSeedService {
       latitude: 37.1325,
       longitude: 128.2129,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'yeongju_church',
@@ -895,6 +1001,7 @@ class FirestoreSeedService {
       latitude: 36.8057,
       longitude: 128.6241,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'gimcheon_church',
@@ -904,6 +1011,7 @@ class FirestoreSeedService {
       latitude: 36.1198,
       longitude: 128.1135,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'sacheon_church',
@@ -913,6 +1021,7 @@ class FirestoreSeedService {
       latitude: 35.0731,
       longitude: 128.0644,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'changnyeong_church',
@@ -922,6 +1031,7 @@ class FirestoreSeedService {
       latitude: 35.5442,
       longitude: 128.4934,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'hampyeong_church',
@@ -931,6 +1041,7 @@ class FirestoreSeedService {
       latitude: 35.0660,
       longitude: 126.5166,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'hwasun_church',
@@ -940,6 +1051,7 @@ class FirestoreSeedService {
       latitude: 35.0634,
       longitude: 126.9869,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'naju_church',
@@ -949,6 +1061,7 @@ class FirestoreSeedService {
       latitude: 34.9843,
       longitude: 126.7119,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'boryeong_church',
@@ -958,6 +1071,7 @@ class FirestoreSeedService {
       latitude: 36.3333,
       longitude: 126.6128,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'nonsan_church',
@@ -967,6 +1081,7 @@ class FirestoreSeedService {
       latitude: 36.1872,
       longitude: 127.0987,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'samcheok_church',
@@ -976,6 +1091,7 @@ class FirestoreSeedService {
       latitude: 37.4499,
       longitude: 129.1652,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'yeongwol_church',
@@ -985,6 +1101,7 @@ class FirestoreSeedService {
       latitude: 37.1838,
       longitude: 128.4617,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'cheorwon_church',
@@ -994,6 +1111,7 @@ class FirestoreSeedService {
       latitude: 38.1467,
       longitude: 127.3133,
       imageUrl: 'https://images.unsplash.com/photo-1555861496-0666c8981751?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'goseong_church',
@@ -1003,6 +1121,7 @@ class FirestoreSeedService {
       latitude: 38.3806,
       longitude: 128.4678,
       imageUrl: 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?w=500&h=250&fit=crop',
+      siteType: HolySiteType.church,
     ),
     HolySite(
       id: 'oseong_prayer',
@@ -1012,8 +1131,91 @@ class FirestoreSeedService {
       latitude: 37.4900,
       longitude: 127.4870,
       imageUrl: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=500&h=250&fit=crop',
+      siteType: HolySiteType.memorial,
+    ),
+
+    // ── 이천·광주 기독교 박물관 추가 ──
+    HolySite(
+      id: 'kch_museum',
+      name: '한국기독교역사박물관',
+      description:
+          '한영제 장로가 수집한 10만여 점의 기독교 역사 자료를 소장한 국내 유일의 기독교 역사 전문 박물관입니다. '
+          '문서, 사진, 엽서 등 근대 한국 기독교의 발자취를 한눈에 볼 수 있습니다.',
+      latitude: 37.2206,
+      longitude: 127.4887,
+      imageUrl:
+          'https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
+    ),
+    HolySite(
+      id: 'hestory_campus',
+      name: '히스토리캠퍼스',
+      description:
+          '유나이티드문화재단이 설립한 기독교 복합 문화공간입니다. 선교역사박물관, 성경박물관, 노아의방주 박물관과 '
+          '400석 공연장을 갖추고 있으며, \'인류의 역사는 하나님의 이야기\'라는 의미를 담고 있습니다.',
+      latitude: 37.3168,
+      longitude: 127.2728,
+      imageUrl:
+          'https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?w=500&h=250&fit=crop',
+      siteType: HolySiteType.museum,
     ),
   ];
+
+  /// 강제로 전체 삭제 후 siteType 포함하여 다시 시드합니다.
+  /// 한 번 실행되면 다시 실행하지 않도록 _migrationVersion으로 관리합니다.
+  static const int _currentVersion = 2; // siteType 추가 버전
+
+  Future<bool> migrateSiteTypes() async {
+    try {
+      // 버전 체크: 이미 마이그레이션 완료되었는지 확인
+      final metaDoc = await _firestore
+          .collection('holy_sites_meta')
+          .doc('version')
+          .get();
+      final savedVersion = metaDoc.exists
+          ? (metaDoc.data()?['version'] as int? ?? 0)
+          : 0;
+
+      if (savedVersion >= _currentVersion) return false;
+
+      // 기존 문서 전체 삭제
+      final snapshot = await _firestore.collection('holy_sites').get();
+      if (snapshot.docs.isNotEmpty) {
+        final deleteBatch = _firestore.batch();
+        for (final doc in snapshot.docs) {
+          deleteBatch.delete(doc.reference);
+        }
+        await deleteBatch.commit();
+      }
+
+      // 새로 시드 (siteType 포함)
+      final insertBatch = _firestore.batch();
+      for (final site in seedSites) {
+        final docRef = _firestore.collection('holy_sites').doc(site.id);
+        insertBatch.set(docRef, {
+          'name': site.name,
+          'description': site.description,
+          'latitude': site.latitude,
+          'longitude': site.longitude,
+          'imageUrl': site.imageUrl,
+          'siteType': site.siteType.name,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+      }
+      await insertBatch.commit();
+
+      // 버전 저장
+      await _firestore
+          .collection('holy_sites_meta')
+          .doc('version')
+          .set({'version': _currentVersion});
+
+      return true;
+    } catch (e) {
+      debugPrint('[HolyRoad] migrateSiteTypes error: $e');
+      return false;
+    }
+  }
 
   /// holy_sites 컬렉션이 비어있으면 시드 데이터 삽입
   Future<bool> seedIfEmpty() async {
@@ -1036,6 +1238,7 @@ class FirestoreSeedService {
           'latitude': site.latitude,
           'longitude': site.longitude,
           'imageUrl': site.imageUrl,
+          'siteType': site.siteType.name,
           'createdAt': FieldValue.serverTimestamp(),
         });
       }
@@ -1048,11 +1251,36 @@ class FirestoreSeedService {
     }
   }
 
-  /// Firestore에서 모든 성지 목록 가져오기
+  /// 시드 데이터의 id → siteType 매핑 (캐시)
+  static final Map<String, HolySiteType> _siteTypeMap = {
+    for (final site in seedSites) site.id: site.siteType,
+  };
+
+  /// id로 시드 데이터의 siteType을 조회합니다 (Firestore 값보다 우선)
+  static HolySiteType _resolveSiteType(String id, String? firestoreValue) {
+    // 시드 데이터 매핑 우선
+    if (_siteTypeMap.containsKey(id)) {
+      return _siteTypeMap[id]!;
+    }
+    // Firestore 값 사용
+    if (firestoreValue != null) {
+      return HolySiteType.values.firstWhere(
+        (t) => t.name == firestoreValue,
+        orElse: () => HolySiteType.holySite,
+      );
+    }
+    return HolySiteType.holySite;
+  }
+
+  /// Firestore에서 모든 성지 목록 가져오기 (시드 데이터와 병합)
   Future<List<HolySite>> getAllSites() async {
     try {
       final snapshot = await _firestore.collection('holy_sites').get();
-      return snapshot.docs.map((doc) {
+
+      // Firestore 문서 ID 수집 & 변환
+      final firestoreIds = <String>{};
+      final firestoreSites = snapshot.docs.map((doc) {
+        firestoreIds.add(doc.id);
         final data = doc.data();
         return HolySite(
           id: doc.id,
@@ -1061,17 +1289,61 @@ class FirestoreSeedService {
           latitude: (data['latitude'] as num?)?.toDouble() ?? 0.0,
           longitude: (data['longitude'] as num?)?.toDouble() ?? 0.0,
           imageUrl: data['imageUrl'] as String? ?? '',
+          siteType: _resolveSiteType(doc.id, data['siteType'] as String?),
         );
       }).toList();
+
+      // Firestore에 없는 시드 항목 찾기
+      final missingSites = seedSites
+          .where((site) => !firestoreIds.contains(site.id))
+          .toList();
+
+      if (missingSites.isNotEmpty) {
+        debugPrint(
+          '[HolyRoad] ${missingSites.length}개 시드 성지가 Firestore에 없음: '
+          '${missingSites.map((s) => s.id).join(', ')}',
+        );
+        // Firestore에 쓰기 시도 (실패해도 무시)
+        _tryInsertMissingSites(missingSites);
+      }
+
+      // Firestore 데이터 + 누락된 시드 데이터 병합
+      return [...firestoreSites, ...missingSites];
     } catch (e) {
+      debugPrint('[HolyRoad] getAllSites error: $e');
       return [];
     }
   }
 
-  /// 성지 목록 스트림 (실시간 업데이트)
+  /// 누락된 시드 성지를 Firestore에 삽입 시도 (fire-and-forget)
+  Future<void> _tryInsertMissingSites(List<HolySite> missingSites) async {
+    try {
+      final batch = _firestore.batch();
+      for (final site in missingSites) {
+        final docRef = _firestore.collection('holy_sites').doc(site.id);
+        batch.set(docRef, {
+          'name': site.name,
+          'description': site.description,
+          'latitude': site.latitude,
+          'longitude': site.longitude,
+          'imageUrl': site.imageUrl,
+          'siteType': site.siteType.name,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+      }
+      await batch.commit();
+      debugPrint('[HolyRoad] ${missingSites.length}개 누락 성지 Firestore 삽입 성공');
+    } catch (e) {
+      debugPrint('[HolyRoad] 누락 성지 Firestore 삽입 실패 (무시): $e');
+    }
+  }
+
+  /// 성지 목록 스트림 (실시간 업데이트, 시드 데이터 병합)
   Stream<List<HolySite>> watchAllSites() {
     return _firestore.collection('holy_sites').snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) {
+      final firestoreIds = <String>{};
+      final firestoreSites = snapshot.docs.map((doc) {
+        firestoreIds.add(doc.id);
         final data = doc.data();
         return HolySite(
           id: doc.id,
@@ -1080,8 +1352,16 @@ class FirestoreSeedService {
           latitude: (data['latitude'] as num?)?.toDouble() ?? 0.0,
           longitude: (data['longitude'] as num?)?.toDouble() ?? 0.0,
           imageUrl: data['imageUrl'] as String? ?? '',
+          siteType: _resolveSiteType(doc.id, data['siteType'] as String?),
         );
       }).toList();
+
+      // Firestore에 없는 시드 항목 병합
+      final missingSites = seedSites
+          .where((site) => !firestoreIds.contains(site.id))
+          .toList();
+
+      return [...firestoreSites, ...missingSites];
     });
   }
 }

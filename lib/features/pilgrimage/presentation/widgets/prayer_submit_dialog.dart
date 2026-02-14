@@ -7,6 +7,9 @@ import 'package:holyroad/core/services/image_upload_service.dart';
 import 'package:holyroad/features/map/domain/entities/holy_site_entity.dart';
 import 'package:holyroad/features/pilgrimage/domain/entities/visit_entity.dart';
 import 'package:holyroad/features/pilgrimage/domain/repositories/firestore_repository.dart';
+import 'package:holyroad/features/profile/domain/badge_entity.dart';
+import 'package:holyroad/features/profile/domain/badge_service.dart';
+import 'package:holyroad/features/profile/presentation/widgets/badge_earned_dialog.dart';
 
 /// 기도문 + 사진 제출 바텀시트.
 /// [site]가 전달되면 해당 성지 정보와 함께 기도문을 저장합니다.
@@ -258,6 +261,45 @@ class _PrayerSubmitDialogState extends ConsumerState<PrayerSubmitDialog> {
 
       await firestoreRepo.addVisit(visit);
 
+      // ── 배지 체크 ──
+      List<BadgeDefinition> newBadges = [];
+      try {
+        final badgeService = BadgeService();
+        // 사용자의 전체 방문 기록을 가져와서 통계 계산
+        final visitsStream = firestoreRepo.getUserVisits(currentUser.uid);
+        final visits = await visitsStream.first;
+
+        final totalVisits = visits.length;
+        final totalPhotos = visits.where((v) => v.photoUrl.isNotEmpty).length;
+        final uniqueSites = visits.map((v) => v.siteId).toSet().length;
+        final totalPrayers = visits.where((v) => v.prayerMessage.isNotEmpty).length;
+        final streakDays = _calculateStreak(visits);
+
+        final badgeContext = BadgeCheckContext(
+          totalVisits: totalVisits,
+          totalPhotos: totalPhotos,
+          uniqueSites: uniqueSites,
+          streakDays: streakDays,
+          totalPrayers: totalPrayers,
+        );
+
+        // 이미 획득한 배지 목록 조회
+        final earnedIds = await badgeService.getEarnedBadgeIds(currentUser.uid);
+
+        // 새 배지 체크
+        newBadges = badgeService.checkNewBadges(badgeContext, earnedIds);
+
+        // 새 배지가 있으면 Firestore에 저장
+        if (newBadges.isNotEmpty) {
+          final earnedBadges = newBadges
+              .map((b) => EarnedBadge(badgeId: b.id, earnedAt: DateTime.now()))
+              .toList();
+          await badgeService.saveBadges(currentUser.uid, earnedBadges);
+        }
+      } catch (e) {
+        debugPrint('배지 체크 중 오류 (기도문은 이미 저장됨): $e');
+      }
+
       if (mounted) {
         Navigator.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
@@ -268,6 +310,11 @@ class _PrayerSubmitDialogState extends ConsumerState<PrayerSubmitDialog> {
             behavior: SnackBarBehavior.floating,
           ),
         );
+
+        // 새 배지가 있으면 축하 다이얼로그 표시
+        if (newBadges.isNotEmpty && mounted) {
+          await BadgeEarnedDialog.showIfNeeded(context, newBadges);
+        }
       }
     } catch (e) {
       if (mounted) {
@@ -280,5 +327,39 @@ class _PrayerSubmitDialogState extends ConsumerState<PrayerSubmitDialog> {
         setState(() => _isSubmitting = false);
       }
     }
+  }
+
+  /// 연속 순례일 계산 (프로필 화면과 동일 로직).
+  int _calculateStreak(List<VisitEntity> visits) {
+    if (visits.isEmpty) return 0;
+
+    final visitDates = visits
+        .map((v) => DateTime(v.timestamp.year, v.timestamp.month, v.timestamp.day))
+        .toSet()
+        .toList()
+      ..sort((a, b) => b.compareTo(a));
+
+    if (visitDates.isEmpty) return 0;
+
+    final today = DateTime(
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+    );
+
+    final lastVisitDate = visitDates.first;
+    final daysDiff = today.difference(lastVisitDate).inDays;
+    if (daysDiff > 1) return 0;
+
+    int streak = 1;
+    for (int i = 0; i < visitDates.length - 1; i++) {
+      final diff = visitDates[i].difference(visitDates[i + 1]).inDays;
+      if (diff == 1) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+    return streak;
   }
 }

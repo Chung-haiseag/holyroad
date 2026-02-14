@@ -2,17 +2,19 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:holyroad/core/services/gemini_ai_service.dart';
+import 'package:holyroad/features/auth/domain/entities/user_persona.dart';
 
 
 
 part 'ai_service.g.dart';
 
 abstract class AIService {
-  Future<String> generateGuide(String siteName, String topic);
-  Stream<String> streamGuide(String siteName, String topic);
+  Future<String> generateGuide(String siteName, String topic, {UserPersona? persona});
+  Stream<String> streamGuide(String siteName, String topic, {UserPersona? persona});
 
   /// 신앙 상담 채팅: 대화 이력을 포함한 스트리밍 응답
-  Stream<String> streamChat(List<ChatMessage> history, String userMessage);
+  /// [activityContext]에 순례 활동 통계를 전달하면 맞춤 상담이 가능합니다.
+  Stream<String> streamChat(List<ChatMessage> history, String userMessage, {UserPersona? persona, String? activityContext});
 }
 
 /// 채팅 메시지 모델
@@ -42,13 +44,13 @@ AIService aiService(AiServiceRef ref) {
 
 class MockAIService implements AIService {
   @override
-  Future<String> generateGuide(String siteName, String topic) async {
+  Future<String> generateGuide(String siteName, String topic, {UserPersona? persona}) async {
     await Future.delayed(const Duration(seconds: 2));
     return "$siteName에 대한 $topic 가이드입니다. 이곳의 역사는 깊고 의미가 있습니다...";
   }
 
   @override
-  Stream<String> streamGuide(String siteName, String topic) async* {
+  Stream<String> streamGuide(String siteName, String topic, {UserPersona? persona}) async* {
     final text = "$siteName의 $topic에 대해 설명해 드리겠습니다. 이곳은 순교자들의 피와 땀이 서려있는 거룩한 장소입니다. 잠시 묵상하며 걸어보세요...";
     for (var i = 0; i < text.length; i++) {
         await Future.delayed(const Duration(milliseconds: 50));
@@ -57,7 +59,7 @@ class MockAIService implements AIService {
   }
 
   @override
-  Stream<String> streamChat(List<ChatMessage> history, String userMessage) async* {
+  Stream<String> streamChat(List<ChatMessage> history, String userMessage, {UserPersona? persona, String? activityContext}) async* {
     await Future.delayed(const Duration(milliseconds: 500));
 
     final responses = [
